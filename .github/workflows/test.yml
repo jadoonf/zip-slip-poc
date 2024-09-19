@@ -28,7 +28,7 @@ jobs:
           ci: only
       # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm install .
 
       # Run the exploit (index.js)
       - name: Run Zip Slip exploit
