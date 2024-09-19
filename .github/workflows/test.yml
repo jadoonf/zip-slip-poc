@@ -13,22 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repo
       - name: Checkout code
         uses: actions/checkout@v3
-
-      # Step 3: Install dependencies
+      - uses: listendev/action@v0.10
+        with:
+          jwt: ${{ secrets.LS1 }}
+          ci: only
       - name: Install dependencies
         run: npm install .
 
-      # Step 4: Run the Zip Slip exploit
       - name: Run Zip Slip exploit
         run: node index.js
 
-      # Step 5: Verify if the evil.txt was extracted outside /tmp/safe
       - name: Check /tmp directory contents
         run: ls -al /tmp/
 
-      # Step 6: Verify the /tmp/safe directory contents
       - name: Check /tmp/safe directory contents
         run: ls -al /tmp/safe/
