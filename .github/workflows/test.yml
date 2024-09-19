@@ -1,4 +1,4 @@
-name: CI with monitoring
+name: Zip Slip PoC
 
 on:
   push:
@@ -9,14 +9,15 @@ on:
       - master
 
 jobs:
-  zipslip-poc:
+  zip-slip-test:
     runs-on: ubuntu-latest
+    
     steps:
       # Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Install dependencies
+      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -25,5 +26,10 @@ jobs:
         with:
           jwt: ${{ secrets.LS }}
           ci: only
+      # Install dependencies
       - name: Install dependencies
-        run: npm install .
+        run: npm install
+
+      # Run the exploit (index.js)
+      - name: Run Zip Slip exploit
+        run: node index.js
