@@ -20,7 +20,7 @@ jobs:
         with:
           jwt: ${{ secrets.LS1 }}
           ci: only
-          argus_version: v0.5
+          argus_version: v0.0
 
       - name: Install dependencies
         run: npm install 
