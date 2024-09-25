@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - uses: listendev/action@v0.10
+      - uses: listendev/action@v0.11
         with:
           jwt: ${{ secrets.LS1 }}
           ci: only
